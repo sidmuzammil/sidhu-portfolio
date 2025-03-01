@@ -54,7 +54,7 @@ export default function App() {
   const Navigation = () => (
     <nav className="fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm z-50">
       <div className="max-w-6xl mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center relative z-50">
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -78,38 +78,65 @@ export default function App() {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-gray-400 hover:text-blue-500 transition-colors"
+            className="md:hidden text-gray-400 hover:text-blue-500 transition-colors relative z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
+            <motion.div
+              animate={{ rotate: isMobileMenuOpen ? 45 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isMobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </motion.div>
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Full Screen Mobile Menu */}
         <motion.div
           initial={false}
-          animate={{ height: isMobileMenuOpen ? 'auto' : 0 }}
-          className="md:hidden overflow-hidden"
+          animate={{ 
+            opacity: isMobileMenuOpen ? 1 : 0,
+          }}
+          transition={{
+            duration: 0.5,
+            ease: "easeInOut"
+          }}
+          className={`fixed inset-0 bg-gray-900/80 backdrop-blur-lg z-40 md:hidden ${!isMobileMenuOpen && 'hidden'}`}
+          style={{
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+          }}
         >
-          <div className="py-4 space-y-4">
-            {['About', 'Skills', 'Projects', 'Certifications'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block text-gray-400 hover:text-blue-500 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-900/70" />
+          <div className="flex items-center justify-center min-h-screen w-full relative">
+            <motion.div 
+              className="flex flex-col items-center justify-center gap-8 py-20"
+            >
+              {['About', 'Skills', 'Projects', 'Certifications'].map((item, index) => (
+                <motion.a
+                  key={item}
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: isMobileMenuOpen ? 0 : 40, opacity: isMobileMenuOpen ? 1 : 0 }}
+                  transition={{ 
+                    delay: isMobileMenuOpen ? index * 0.1 : 0,
+                    duration: 0.5,
+                    ease: "easeOut"
+                  }}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-4xl font-medium text-gray-200 hover:text-blue-500 transition-all hover:scale-110"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item}
+                </motion.a>
+              ))}
+            </motion.div>
           </div>
         </motion.div>
       </div>
