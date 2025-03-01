@@ -52,15 +52,15 @@ export default function App() {
   ];
 
   const Navigation = () => (
-    <nav className="fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm z-50">
+    <nav className="fixed top-0 left-0 right-0  z-50">
       <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center relative z-50">
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
+            className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-700 to-purple-500 text-transparent bg-clip-text"
           >
-            Sidhu
+            Sidhu.
           </motion.h1>
           
           {/* Desktop Menu */}
@@ -69,7 +69,7 @@ export default function App() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-400 hover:text-blue-500 transition-colors"
+                className="text-gray-200 hover:text-violet-400 transition-colors"
               >
                 {item}
               </a>
@@ -78,7 +78,7 @@ export default function App() {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-gray-400 hover:text-blue-500 transition-colors relative z-50"
+            className="md:hidden text-gray-400 hover:text-blue-700 transition-colors relative z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <motion.div
@@ -147,7 +147,7 @@ export default function App() {
   );
 
   return (
-    <div className="bg-gray-900 text-white overflow-x-hidden">
+    <div className="bg-black text-white overflow-x-hidden">
       <Navigation />
       {isLoading ? (
         <motion.div 
@@ -155,7 +155,7 @@ export default function App() {
           animate={{ opacity: 1 }}
           className="h-screen flex items-center justify-center"
         >
-          <div className="text-4xl font-bold text-blue-500">Loading...</div>
+          <div className="text-4xl font-bold text-white">Loading...</div>
         </motion.div>
       ) : (
         <motion.div
@@ -173,19 +173,19 @@ export default function App() {
                 animate={{ y: 0 }}
                 className="text-5xl md:text-7xl font-bold mb-6"
               >
-                Hi, I'm <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">Sidhu</span>
+                Hi, I'm <span className="bg-gradient-to-r from-blue-700 to-purple-500 text-transparent bg-clip-text">Sidhu</span>
               </motion.h1>
               <motion.p 
                 initial={{ y: 50 }}
                 animate={{ y: 0 }}
                 className="text-xl md:text-2xl text-gray-400 mb-8"
               >
-                Cloud Engineer & DevOps Specialist
+                Cloud Engineer & Web developer
               </motion.p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-medium"
+                className="bg-violet-800 hover:bg-violet-900 text-white px-8 py-3 rounded-full font-medium"
                 onClick={() => {
                   document.getElementById('projects').scrollIntoView({ 
                     behavior: 'smooth',
@@ -199,12 +199,12 @@ export default function App() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="min-h-screen flex items-center py-16 sm:py-20 px-4 bg-gray-800">
+          <section id="about" className="min-h-screen flex items-center py-16 sm:py-20 px-4 bg-neutral-900 rounded-[2em]">
             <div className="max-w-6xl mx-auto">
               <motion.h2 
                 initial={{ x: -50 }}
                 whileInView={{ x: 0 }}
-                className="text-4xl font-bold mb-8 text-blue-500"
+                className="text-4xl font-bold mb-8 text-white"
               >
                 About Me
               </motion.h2>
@@ -214,12 +214,12 @@ export default function App() {
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-gray-200 leading-relaxed">
                     I am a passionate Cloud Engineer with extensive experience in designing and implementing cloud solutions. 
                     With a strong focus on AWS and Azure platforms, I help organizations build scalable, secure, and efficient 
                     infrastructure.
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed mt-4">
+                  <p className="text-lg text-gray-200 leading-relaxed mt-4">
                     My expertise in DevOps practices allows me to bridge the gap between development and operations, 
                     ensuring smooth deployment pipelines and robust infrastructure as code implementations.
                   </p>
@@ -228,10 +228,10 @@ export default function App() {
                   initial={{ x: 50, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="bg-gray-900 p-6 rounded-lg"
+                  className="bg-neutral-800 p-6 rounded-lg"
                 >
-                  <h3 className="text-xl font-bold mb-4 text-blue-500">Key Expertise</h3>
-                  <ul className="space-y-2 text-gray-300">
+                  <h3 className="text-xl font-bold mb-4 text-gray-200">Key Expertise</h3>
+                  <ul className="space-y-2 text-white">
                     <li>• Cloud Architecture & Migration</li>
                     <li>• Infrastructure as Code</li>
                     <li>• CI/CD Implementation</li>
@@ -250,7 +250,7 @@ export default function App() {
               <motion.h2 
                 initial={{ x: -50 }}
                 whileInView={{ x: 0 }}
-                className="text-4xl font-bold mb-12 text-blue-500"
+                className="text-4xl font-bold mb-12 text-gray-300"
               >
                 Skills
               </motion.h2>
@@ -261,16 +261,16 @@ export default function App() {
                     initial={{ y: 50, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 }}
-                    className="bg-gray-800 p-6 rounded-lg"
+                    className="bg-neutral-900 p-6 rounded-lg"
                   >
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-2xl">{skill.icon}</span>
-                      <span className="text-blue-500 font-medium">{skill.level}</span>
+                      <span className="text-violet-300 font-medium">{skill.level}</span>
                     </div>
                     <h3 className="text-xl font-bold mb-2">{skill.name}</h3>
                     <div className="w-full bg-gray-700 rounded-full h-2.5">
                       <div 
-                        className="bg-blue-500 h-2.5 rounded-full transition-all duration-1000"
+                        className="bg-gradient-to-r from-blue-500 to-purple-500 h-2.5 rounded-full transition-all duration-1000"
                         style={{ width: skill.level }}
                       ></div>
                     </div>
@@ -286,7 +286,7 @@ export default function App() {
               <motion.h2 
                 initial={{ x: -50 }}
                 whileInView={{ x: 0 }}
-                className="text-4xl font-bold mb-12 text-blue-500"
+                className="text-4xl font-bold mb-12 text-gray-300"
               >
                 Projects
               </motion.h2>
@@ -298,15 +298,15 @@ export default function App() {
                     whileInView={{ y: 0, opacity: 1 }}
                     whileHover={{ y: -10 }}
                     transition={{ delay: index * 0.1 }}
-                    className="bg-gray-800 rounded-lg overflow-hidden"
+                    className="bg-neutral-900 rounded-lg overflow-hidden"
                   >
-                    <div className="h-48 bg-gray-700"></div>
+                    <div className="h-48 bg-gray-100"></div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                      <p className="text-gray-400 mb-4">{project.description}</p>
+                      <p className="text-gray-300 mb-4">{project.description}</p>
                       <a 
                         href={project.link}
-                        className="text-blue-500 hover:text-blue-400 font-medium"
+                        className="text-violet-300 hover:text-violet-500 font-medium"
                       >
                         View Project →
                       </a>
@@ -319,12 +319,12 @@ export default function App() {
 
           {/* Certifications Section - Update with image modal */}
           {/* Certifications Section */}
-                <section id="certifications" className="min-h-screen flex items-center py-16 sm:py-20 px-4 bg-gray-800">
+                <section id="certifications" className="min-h-screen flex items-center py-16 sm:py-20 px-4 bg-neutral-900 rounded-t-[2em]">
                   <div className="max-w-6xl mx-auto w-full">
                     <motion.h2 
                       initial={{ x: -50 }}
                       whileInView={{ x: 0 }}
-                      className="text-4xl font-bold mb-12 text-blue-500"
+                      className="text-4xl font-bold mb-12 text-violet-300"
                     >
                       Certifications
                     </motion.h2>
@@ -336,12 +336,12 @@ export default function App() {
                           whileInView={{ y: 0, opacity: 1 }}
                           whileHover={{ scale: 1.05 }}
                           transition={{ delay: index * 0.1 }}
-                          className="bg-gray-900 p-6 rounded-lg border border-blue-500/20 hover:border-blue-500 transition-all cursor-pointer"
+                          className="bg-neutral-800 p-6 rounded-lg border border-violet-400/20 hover:border-violet-800 transition-all cursor-pointer"
                           onClick={() => setSelectedCert(cert)}
                         >
                           <h3 className="text-xl font-bold mb-2">{cert.name}</h3>
-                          <p className="text-gray-400">{cert.issuer}</p>
-                          <p className="text-blue-500">{cert.year}</p>
+                          <p className="text-gray-300">{cert.issuer}</p>
+                          <p className="text-violet-300">{cert.year}</p>
                         </motion.div>
                       ))}
                     </div>
@@ -359,7 +359,7 @@ export default function App() {
               <motion.div
                 initial={{ scale: 0.5 }}
                 animate={{ scale: 1 }}
-                className="bg-gray-800 p-4 rounded-lg max-w-2xl w-full"
+                className="bg-neutral-900 p-4 rounded-lg max-w-2xl w-full"
                 onClick={e => e.stopPropagation()}
               >
                 <img 
@@ -374,20 +374,20 @@ export default function App() {
           )}
 
           {/* Footer - Update with icons */}
-          <footer className="bg-gray-900 py-8 sm:py-12 px-4 border-t border-gray-800">
+          <footer className="bg-black py-8 sm:py-12 px-4 border-t-[.1px] border-neutral-800 ">
             <div className="max-w-6xl mx-auto w-full text-center">
               <div className="flex justify-center gap-8 mb-8">
-                <a href="#" className="text-2xl text-gray-400 hover:text-blue-500 transition-colors">
+                <a href="#" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaLinkedin />
                 </a>
-                <a href="#" className="text-2xl text-gray-400 hover:text-blue-500 transition-colors">
+                <a href="#" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaGithub />
                 </a>
-                <a href="#" className="text-2xl text-gray-400 hover:text-blue-500 transition-colors">
+                <a href="#" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaEnvelope />
                 </a>
               </div>
-              <p className="text-gray-400">© 2024 Sidhu. All rights reserved.</p>
+              <p className="text-gray-200">© 2025 Muzamilsid All rights reserved.</p>
             </div>
           </footer>
         </motion.div>
