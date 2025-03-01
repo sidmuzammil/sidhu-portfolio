@@ -186,6 +186,12 @@ export default function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-medium"
+                onClick={() => {
+                  document.getElementById('projects').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
               >
                 View My Work
               </motion.button>
