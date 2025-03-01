@@ -108,35 +108,38 @@ export default function App() {
             duration: 0.5,
             ease: "easeInOut"
           }}
-          className={`fixed inset-0 bg-gray-900/80 backdrop-blur-lg z-40 md:hidden ${!isMobileMenuOpen && 'hidden'}`}
-          style={{
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-          }}
+          className={`fixed inset-0 z-40 md:hidden ${!isMobileMenuOpen && 'hidden'}`}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-900/70" />
-          <div className="flex items-center justify-center min-h-screen w-full relative">
-            <motion.div 
-              className="flex flex-col items-center justify-center gap-8 py-20"
-            >
-              {['About', 'Skills', 'Projects', 'Certifications'].map((item, index) => (
-                <motion.a
-                  key={item}
-                  initial={{ y: 40, opacity: 0 }}
-                  animate={{ y: isMobileMenuOpen ? 0 : 40, opacity: isMobileMenuOpen ? 1 : 0 }}
-                  transition={{ 
-                    delay: isMobileMenuOpen ? index * 0.1 : 0,
-                    duration: 0.5,
-                    ease: "easeOut"
-                  }}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-4xl font-medium text-gray-200 hover:text-blue-500 transition-all hover:scale-110"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </motion.div>
+          <div 
+            className="absolute inset-0 backdrop-blur-xl bg-gray-900/70"
+            style={{
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+            }}
+          >
+            <div className="flex items-center justify-center min-h-screen w-full bg-black">
+              <motion.div 
+                className="flex flex-col items-center justify-center gap-8 py-20 px-4 "
+              >
+                {['About', 'Skills', 'Projects', 'Certifications'].map((item, index) => (
+                  <motion.a
+                    key={item}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: isMobileMenuOpen ? 0 : 40, opacity: isMobileMenuOpen ? 1 : 0 }}
+                    transition={{ 
+                      delay: isMobileMenuOpen ? index * 0.1 : 0,
+                      duration: 0.5,
+                      ease: "easeOut"
+                    }}
+                    href={`#${item.toLowerCase()}`}
+                    className="text-4xl font-medium text-white/90 hover:text-blue-500 transition-all hover:scale-110"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item}
+                  </motion.a>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
