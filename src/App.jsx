@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCert, setSelectedCert] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 1500);
@@ -57,11 +58,13 @@ export default function App() {
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
+            className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
           >
             Sidhu
           </motion.h1>
-          <div className="flex gap-6">
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-6">
             {['About', 'Skills', 'Projects', 'Certifications'].map((item) => (
               <a
                 key={item}
@@ -72,13 +75,49 @@ export default function App() {
               </a>
             ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-gray-400 hover:text-blue-500 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        <motion.div
+          initial={false}
+          animate={{ height: isMobileMenuOpen ? 'auto' : 0 }}
+          className="md:hidden overflow-hidden"
+        >
+          <div className="py-4 space-y-4">
+            {['About', 'Skills', 'Projects', 'Certifications'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="block text-gray-400 hover:text-blue-500 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </nav>
   );
 
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-900 text-white overflow-x-hidden">
       <Navigation />
       {isLoading ? (
         <motion.div 
@@ -93,6 +132,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
+          className="overflow-x-hidden"
         >
           {/* Hero Section */}
           <section id="home" className="h-screen flex items-center justify-center px-4 relative">
@@ -123,7 +163,7 @@ export default function App() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="min-h-screen flex items-center py-20 px-4 bg-gray-800">
+          <section id="about" className="min-h-screen flex items-center py-16 sm:py-20 px-4 bg-gray-800">
             <div className="max-w-6xl mx-auto">
               <motion.h2 
                 initial={{ x: -50 }}
@@ -169,7 +209,7 @@ export default function App() {
           </section>
 
           {/* Skills Section */}
-          <section id="skills" className="min-h-screen flex items-center py-20 px-4">
+          <section id="skills" className="min-h-screen flex items-center py-16 sm:py-20 px-4">
             <div className="max-w-6xl mx-auto w-full">
               <motion.h2 
                 initial={{ x: -50 }}
@@ -205,7 +245,7 @@ export default function App() {
           </section>
 
           {/* Projects Section */}
-          <section id="projects" className="min-h-screen flex items-center py-20 px-4">
+          <section id="projects" className="min-h-screen flex items-center py-16 sm:py-20 px-4">
             <div className="max-w-6xl mx-auto w-full">
               <motion.h2 
                 initial={{ x: -50 }}
@@ -243,7 +283,7 @@ export default function App() {
 
           {/* Certifications Section - Update with image modal */}
           {/* Certifications Section */}
-                <section id="certifications" className="min-h-screen flex items-center py-20 px-4 bg-gray-800">
+                <section id="certifications" className="min-h-screen flex items-center py-16 sm:py-20 px-4 bg-gray-800">
                   <div className="max-w-6xl mx-auto w-full">
                     <motion.h2 
                       initial={{ x: -50 }}
@@ -298,8 +338,8 @@ export default function App() {
           )}
 
           {/* Footer - Update with icons */}
-          <footer className="bg-gray-900 py-12 px-4 border-t border-gray-800">
-            <div className="max-w-6xl mx-auto text-center">
+          <footer className="bg-gray-900 py-8 sm:py-12 px-4 border-t border-gray-800">
+            <div className="max-w-6xl mx-auto w-full text-center">
               <div className="flex justify-center gap-8 mb-8">
                 <a href="#" className="text-2xl text-gray-400 hover:text-blue-500 transition-colors">
                   <FaLinkedin />
