@@ -279,7 +279,7 @@ export default function App() {
                 className="mb-8"
               >
                 <video
-                  src="/public/zidhu-video.mp4"
+                  src="/zidhu-video.mp4"
                   autoPlay
                   loop
                   muted
