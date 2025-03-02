@@ -76,7 +76,7 @@ export default function App() {
       name: 'Azure, Microsoft 365, CCNA',
       issuer: 'Emigo networks pvt ltd',
       year: '2025',
-      imageUrl: '../src/assets/MUZAMIL SID_Certificate_page-0001.jpg'
+      imageUrl: '/MUZAMIL SID_Certificate_page-0001.jpg'
     },
     // ... existing certifications ...
   ];
