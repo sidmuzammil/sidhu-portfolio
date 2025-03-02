@@ -279,7 +279,7 @@ export default function App() {
                 className="mb-8"
               >
                 <video
-                  src="/src/assets/zidhu-video.mp4"
+                  src="/public/zidhu-video.mp4"
                   autoPlay
                   loop
                   muted
@@ -521,7 +521,7 @@ export default function App() {
                 <a href="https://github.com/sidmuzammil" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaGithub />
                 </a>
-                <a href="" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
+                <a href="mailto:heyiamsidhu@gmail.com" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaEnvelope />
                 </a>
               </div>
