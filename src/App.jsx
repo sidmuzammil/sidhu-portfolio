@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import popupSound from '../src/assets/pop-up-sound.mp3';
+import cloudMigrationImg from '../src/assets/cloud-migration-project.jpg';
+import devopsImg from '../src/assets/devops.jpg';
+import kubernetesImg from '../src/assets/kubernet.jpg';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -43,33 +46,37 @@ export default function App() {
     { name: 'Python', level: '40%', icon: '🐍💻' },
   ];
 
-  const projects = [
-    {
-      title: 'Cloud Migration Project',
-      description: 'Successfully migrated enterprise applications to AWS cloud infrastructure',
-      image: '/project1.jpg',
-      link: '#'
-    },
-    {
-      title: 'DevOps Pipeline',
-      description: 'Implemented CI/CD pipeline using Jenkins and Docker',
-      image: '/project2.jpg',
-      link: '#'
-    },
-    {
-      title: 'Kubernetes Cluster',
-      description: 'Set up and managed production-grade Kubernetes clusters',
-      image: '/project3.jpg',
-      link: '#'
-    }
-  ];
+  // Add these imports at the top with other imports
 
+  
+  // Update the projects array
+  const projects = [
+      {
+        title: 'Cloud Migration Project',
+        description: 'Successfully migrated enterprise applications to AWS cloud infrastructure',
+        image: cloudMigrationImg,
+        link: 'https://github.com/sidmuzammil'
+      },
+      {
+        title: 'DevOps Pipeline',
+        description: 'Implemented CI/CD pipeline using Jenkins and Docker',
+        image: devopsImg,
+        link: 'https://github.com/sidmuzammil'
+      },
+      {
+        title: 'Kubernetes Cluster',
+        description: 'Set up and managed production-grade Kubernetes clusters',
+        image: kubernetesImg,
+        link: 'https://github.com/sidmuzammil'
+      }
+  ];
+  
   const certifications = [
     {
-      name: 'AWS Solutions Architect',
-      issuer: 'Amazon',
-      year: '2023',
-      image: '/aws-cert.jpg'
+      name: 'Azure, Microsoft 365, CCNA',
+      issuer: 'Emigo networks pvt ltd',
+      year: '2025',
+      imageUrl: '../src/assets/MUZAMIL SID_Certificate_page-0001.jpg'
     },
     // ... existing certifications ...
   ];
@@ -416,7 +423,13 @@ export default function App() {
                     transition={{ delay: index * 0.1 }}
                     className="bg-neutral-900 rounded-lg overflow-hidden"
                   >
-                    <div className="h-48 bg-gray-100"></div>
+                    <div className="h-48 bg-gray-100">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                       <p className="text-gray-300 mb-4">{project.description}</p>
@@ -475,16 +488,25 @@ export default function App() {
               <motion.div
                 initial={{ scale: 0.5 }}
                 animate={{ scale: 1 }}
-                className="bg-neutral-900 p-4 rounded-lg max-w-2xl w-full"
+                className="bg-neutral-900 p-4 rounded-lg max-w-4xl w-full"
                 onClick={e => e.stopPropagation()}
               >
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-2xl font-bold">{selectedCert.name}</h3>
+                  <button 
+                    onClick={() => setSelectedCert(null)}
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
                 <img
-                  src={selectedCert.image}
+                  src={selectedCert.imageUrl}
                   alt={selectedCert.name}
-                  className="w-full h-auto rounded-lg mb-4"
+                  className="w-full rounded-lg"
                 />
-                <h3 className="text-2xl font-bold mb-2">{selectedCert.name}</h3>
-                <p className="text-gray-400">{selectedCert.issuer} - {selectedCert.year}</p>
               </motion.div>
             </motion.div>
           )}
@@ -493,13 +515,13 @@ export default function App() {
           <footer className="bg-black py-8 sm:py-12 px-4 border-t-[.1px] border-neutral-800 ">
             <div className="max-w-6xl mx-auto w-full text-center">
               <div className="flex justify-center gap-8 mb-8">
-                <a href="#" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
+                <a href="https://www.linkedin.com/in/muzamil-sid-12b694286/" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaLinkedin />
                 </a>
-                <a href="#" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
+                <a href="https://github.com/sidmuzammil" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaGithub />
                 </a>
-                <a href="#" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
+                <a href="" className="text-2xl text-gray-400 hover:text-violet-800 transition-colors">
                   <FaEnvelope />
                 </a>
               </div>
